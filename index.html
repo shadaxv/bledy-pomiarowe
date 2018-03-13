@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="navbar-fixed.css">
+    <script src="navbar-fixed.js"></script>
+
+</head>
+
+<body class="fixed-sn">
+
+    <!--Main Navigation-->
+    <header>
+        <!--Navbar-->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Błędy pomiarowe</a>
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link js-scroll-trigger" href="#start">Start <span class="sr-only">(current)</span></a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#wybierz-blad-pomiarowy">Wybierz błąd pomiarowy</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#wprowadz-dane">Wprowadź dane</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#zobacz-wynik">Zobacz wynik</a>
+                    </li>
+
+                </ul>
+                <!-- Links -->
+            </div>
+            <!-- Collapsible content -->
+
+        </nav>
+        <!--/.Navbar-->
+
+    </header>
+    <!--Main Navigation-->
+                
+
+    <!--Main layout-->
+    <main>
+
+        <div id="start" style="height: 100vh">
+            <div class="flex-center flex-column">
+                <h1 class="animated fadeIn mb-4">Obliczanie błędów pomiarowych</h1>
+    
+                <h5 class="animated fadeIn mb-3">Aleksander Niedźwiedź, Filip Porucznik, Damian Tarnawski</h5>
+            </div>
+        </div>
+
+        <div id="wybierz-blad-pomiarowy" style="height: 100vh">
+            <div class="flex-center flex-column">
+                <h2 class="animated fadeIn mb-4">Wybierz błąd pomiarowy</h2>
+            </div>
+        </div>
+
+        <div id="wprowadz-dane" style="height: 100vh">
+            <div class="flex-center flex-column">
+                <h2 class="animated fadeIn mb-4">Wprowadź dane</h2>
+            </div>
+        </div>
+
+        <div id="zobacz-wynik" style="height: 100vh">
+            <div class="flex-center flex-column">
+                <h2 class="animated fadeIn mb-4">Zobacz wynik</h2>
+            </div>
+        </div>
+
+    </main>
+    <!--Main layout-->
+                
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script>
+    (function($) {
+  "use strict"; // Start of use strict
+
+  // Smooth scrolling using jQuery easing
+  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: (target.offset().top - 54)
+        }, 1000, "easeInOutExpo");
+        return false;
+      }
+    }
+  });
+
+  // Closes responsive menu when a scroll trigger link is clicked
+  $('.js-scroll-trigger').click(function() {
+    $('.navbar-collapse').collapse('hide');
+  });
+
+  // Activate scrollspy to add active class to navbar items on scroll
+  $('body').scrollspy({
+    target: '#mainNav',
+    offset: 54
+  });
+
+})(jQuery); // End of use strict
+</script>
+                
+</body>
+
+</html>
