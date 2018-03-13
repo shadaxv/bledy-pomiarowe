@@ -67,28 +67,28 @@
 
     <!--Main layout-->
     <main>
-
-        <div id="start" style="height: 100vh">
+        <div id="start" class="section-divider"></div>
+        <div style="height: 100vh">
             <div class="flex-center flex-column">
                 <h1 class="animated fadeIn mb-4">Obliczanie błędów pomiarowych</h1>
     
                 <h5 class="animated fadeIn mb-3">Aleksander Niedźwiedź, Filip Porucznik, Damian Tarnawski</h5>
             </div>
         </div>
-
-        <div id="wybierz-blad-pomiarowy" style="height: 100vh">
+        <div id="wybierz-blad-pomiarowy" class="section-divider"></div>
+        <div style="height: 100vh">
             <div class="flex-center flex-column">
                 <h2 class="animated fadeIn mb-4">Wybierz błąd pomiarowy</h2>
             </div>
         </div>
-
-        <div id="wprowadz-dane" style="height: 100vh">
+        <div id="wprowadz-dane" class="section-divider"></div>
+        <div style="height: 100vh">
             <div class="flex-center flex-column">
                 <h2 class="animated fadeIn mb-4">Wprowadź dane</h2>
             </div>
         </div>
-
-        <div id="zobacz-wynik" style="height: 100vh">
+        <div id="zobacz-wynik" class="section-divider"></div>
+        <div style="height: 100vh">
             <div class="flex-center flex-column">
                 <h2 class="animated fadeIn mb-4">Zobacz wynik</h2>
             </div>
@@ -137,6 +137,40 @@
   });
 
 })(jQuery); // End of use strict
+</script>
+
+<script>
+    let scrollPosition = window.pageYOffset;
+    const menuHeight = 56;
+    function changeActive() {
+  'use strict';
+  const section = document.querySelectorAll(".section-divider");
+  let sections = {};
+  let i = 0;
+
+  Array.prototype.forEach.call(section, function(event) {
+    sections[event.id] = event.offsetTop;
+  });
+  window.addEventListener("scroll", position);
+
+  function position() {
+        scrollPosition = window.pageYOffset;
+  }
+  for (i in sections) {
+    if (sections[i] <= scrollPosition + menuHeight) {
+      let activeAnchors = document.querySelectorAll('.active');      
+      activeAnchors.forEach(anchor => anchor.classList.remove("active"));
+      let nowActiveAnchors = document.querySelectorAll('a[href*=' + i + ']');
+      nowActiveAnchors.forEach(function(anchor) {
+        if (anchor.parentNode.classList.contains("nav-item")) {
+          anchor.parentNode.classList.add("active");   
+        }
+      });
+    }
+  }
+
+};
+window.addEventListener("scroll", changeActive);
 </script>
                 
 </body>
