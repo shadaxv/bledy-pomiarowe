@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
+    <title>Błędy pomiarowe</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -14,9 +14,24 @@
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="navbar-fixed.css">
-    <script src="navbar-fixed.js"></script>
 
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="fixed-sn">
@@ -41,7 +56,7 @@
                     <li class="nav-item active">
                         <a class="nav-link js-scroll-trigger" href="#start">Start <span class="sr-only">(current)</span></a>
                     </li>
-                
+
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#wybierz-blad-pomiarowy">Wybierz błąd pomiarowy</a>
                     </li>
@@ -63,7 +78,7 @@
 
     </header>
     <!--Main Navigation-->
-                
+
 
     <!--Main layout-->
     <main>
@@ -71,7 +86,7 @@
         <div style="height: 100vh">
             <div class="flex-center flex-column">
                 <h1 class="animated fadeIn mb-4">Obliczanie błędów pomiarowych</h1>
-    
+
                 <h5 class="animated fadeIn mb-3">Aleksander Niedźwiedź, Filip Porucznik, Damian Tarnawski</h5>
             </div>
         </div>
@@ -96,7 +111,7 @@
 
     </main>
     <!--Main layout-->
-                
+
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
@@ -158,12 +173,12 @@
   }
   for (i in sections) {
     if (sections[i] <= scrollPosition + menuHeight) {
-      let activeAnchors = document.querySelectorAll('.active');      
+      let activeAnchors = document.querySelectorAll('.active');
       activeAnchors.forEach(anchor => anchor.classList.remove("active"));
       let nowActiveAnchors = document.querySelectorAll('a[href*=' + i + ']');
       nowActiveAnchors.forEach(function(anchor) {
         if (anchor.parentNode.classList.contains("nav-item")) {
-          anchor.parentNode.classList.add("active");   
+          anchor.parentNode.classList.add("active");
         }
       });
     }
@@ -172,7 +187,7 @@
 };
 window.addEventListener("scroll", changeActive);
 </script>
-                
+
 </body>
 
 </html>
