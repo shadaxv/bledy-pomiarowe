@@ -42,7 +42,7 @@
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color">
 
             <!-- Navbar brand -->
-            <a class="navbar-brand" href="#">Błędy pomiarowe</a>
+            <a class="navbar-brand js-scroll-trigger" href="#start">Błędy pomiarowe</a>
 
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -93,6 +93,15 @@
         <div style="height: 100vh">
             <div class="flex-center flex-column">
                 <h2 class="animated fadeIn mb-4 re-text-center">Wybierz błąd pomiarowy</h2>
+                <form class="re-form">
+                  <label for="" class="re-label">Błąd pomiarowy:</label>
+                  <select class="">
+                    <option disabled selected value>Wybierz rodzaj błędu</option>
+                    <option value="os">Odchylenie standardowe</option>
+                    <option value="bw">Błąd względny</option>
+                    <option value="bb">Błąd bezwględny</option>
+                  </select>
+                </form>
             </div>
         </div>
         <div id="wprowadz-dane" class="section-divider"></div>
