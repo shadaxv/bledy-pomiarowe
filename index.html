@@ -85,27 +85,26 @@
         <div id="start" class="section-divider"></div>
         <div style="height: 100vh">
             <div class="flex-center flex-column">
-                <h1 class="animated fadeIn mb-4">Obliczanie błędów pomiarowych</h1>
-
-                <h5 class="animated fadeIn mb-3">Aleksander Niedźwiedź, Filip Porucznik, Damian Tarnawski</h5>
+                <h1 class="animated fadeIn mb-4 re-text-center">Obliczanie błędów pomiarowych</h1>
+                <p class="animated fadeIn mb-3 re-text-center re-sub-header">Aleksander Niedźwiedź, Filip Porucznik, Damian Tarnawski</p>
             </div>
         </div>
         <div id="wybierz-blad-pomiarowy" class="section-divider"></div>
         <div style="height: 100vh">
             <div class="flex-center flex-column">
-                <h2 class="animated fadeIn mb-4">Wybierz błąd pomiarowy</h2>
+                <h2 class="animated fadeIn mb-4 re-text-center">Wybierz błąd pomiarowy</h2>
             </div>
         </div>
         <div id="wprowadz-dane" class="section-divider"></div>
         <div style="height: 100vh">
             <div class="flex-center flex-column">
-                <h2 class="animated fadeIn mb-4">Wprowadź dane</h2>
+                <h2 class="animated fadeIn mb-4 re-text-center">Wprowadź dane</h2>
             </div>
         </div>
         <div id="zobacz-wynik" class="section-divider"></div>
         <div style="height: 100vh">
             <div class="flex-center flex-column">
-                <h2 class="animated fadeIn mb-4">Zobacz wynik</h2>
+                <h2 class="animated fadeIn mb-4 re-text-center">Zobacz wynik</h2>
             </div>
         </div>
 
@@ -115,13 +114,13 @@
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script src="js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script src="js/mdb.min.js"></script>
     <script>
     (function($) {
   "use strict"; // Start of use strict
@@ -155,6 +154,18 @@
 </script>
 
 <script>
+const anchors = document.querySelectorAll(".nav-link");
+anchors.forEach(anchor => anchor.addEventListener('click', updateHash));
+
+function updateHash(event) {
+  const hash = this.getAttribute("href");
+
+  if (history.pushState) {
+    history.pushState(null, null, hash);
+  } else {
+    location.hash = hash;
+  }
+}
     let scrollPosition = window.pageYOffset;
     const menuHeight = 56;
     function changeActive() {
