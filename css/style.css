@@ -1,13 +1,15 @@
 /* Your custom styles */
+
 .nav-item {
-    margin-left: 2px;
-    margin-right: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .nav-item:hover {
-  background-color: rgba(255,255,255,.05);
+  background-color: rgba(255, 255, 255, .05);
   transition: background-color 0.3s ease;
 }
+
 .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
   color: white;
 }
@@ -26,4 +28,54 @@
 .re-label {
   font-weight: 300;
   font-size: 1.25rem;
+}
+
+.re-form-control {
+  display: inline-block;
+  width: auto;
+  margin: 0 8px;
+}
+
+.re-form-control:active, .re-form-control:focus {
+  outline: initial;
+  box-shadow: none;
+}
+
+.re-temporary-class {
+  display: inline-block !IMPORTANT;
+  font-weight: 500 !IMPORTANT;
+  text-align: center !IMPORTANT;
+  white-space: nowrap !IMPORTANT;
+  vertical-align: middle !IMPORTANT;
+  user-select: none !IMPORTANT;
+  border: 1px solid transparent !IMPORTANT;
+  padding: .46875rem 1rem !IMPORTANT;
+  font-size: 1rem !IMPORTANT;
+  line-height: 1.5 !IMPORTANT;
+  border-radius: .125rem !IMPORTANT;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !IMPORTANT;
+  position: relative !IMPORTANT;
+  margin-bottom: .3125rem !IMPORTANT;
+  font-size: .875rem !IMPORTANT;
+  text-decoration: none !IMPORTANT;
+  text-transform: uppercase !IMPORTANT;
+  letter-spacing: 0 !IMPORTANT;
+  cursor: pointer !IMPORTANT;
+  border: 0 !IMPORTANT;
+  outline: 0 !IMPORTANT;
+  transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1) !IMPORTANT;
+  will-change: box-shadow, transform !IMPORTANT;
+  color: rgba(0, 0, 0, .87) !IMPORTANT;
+  background-color: transparent !IMPORTANT;
+  border-color: #ccc !IMPORTANT;
+  box-shadow: none !IMPORTANT;
+  color: #3f51b5 !IMPORTANT;
+  background-color: transparent !IMPORTANT;
+  border-color: #ccc !IMPORTANT;
+}
+
+.re-temporary-class:hover, .re-temporary-class:focus {
+  color: #3f51b5 !IMPORTANT;
+  background-color: hsla(0, 0%, 60%, .2) !IMPORTANT;
+  border-color: hsla(0, 0%, 60%, .2) !IMPORTANT;
 }
