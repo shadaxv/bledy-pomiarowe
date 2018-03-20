@@ -1,4 +1,5 @@
 /* Your custom styles */
+
 html, body, * {
   font-family: 'Montserrat', sans-serif !IMPORTANT;
   letter-spacing: -1px;
@@ -83,10 +84,11 @@ html, body, * {
   background-color: hsla(0, 0%, 60%, .2) !IMPORTANT;
   border-color: hsla(0, 0%, 60%, .2) !IMPORTANT;
 }
+
 .re-temporary-class:active:hover {
-    color: #3f51b5 !IMPORTANT ;
-    background-color: hsla(0,0%,60%,.4) !IMPORTANT;
-    border-color: hsla(0,0%,60%,.4) !IMPORTANT;
+  color: #3f51b5 !IMPORTANT;
+  background-color: hsla(0, 0%, 60%, .4) !IMPORTANT;
+  border-color: hsla(0, 0%, 60%, .4) !IMPORTANT;
 }
 
 .re-data {
@@ -94,5 +96,11 @@ html, body, * {
 }
 
 .re-display {
-  display: block;
+  display: flex;
+  max-width: 700px;
+  flex-wrap: wrap;
+}
+
+.re-form:first-child {
+  flex-basis: 100%;
 }
