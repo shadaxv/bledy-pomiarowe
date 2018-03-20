@@ -56,7 +56,7 @@ html, body, * {
   border: 1px solid transparent !IMPORTANT;
   padding: .46875rem 1rem !IMPORTANT;
   font-size: 1rem !IMPORTANT;
-  line-height: 1.5 !IMPORTANT;
+  line-height: 1.7 !IMPORTANT;
   border-radius: .125rem !IMPORTANT;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !IMPORTANT;
   position: relative !IMPORTANT;
@@ -97,10 +97,69 @@ html, body, * {
 
 .re-display {
   display: flex;
-  max-width: 700px;
   flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
-.re-form:first-child {
+.re-display>* {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.re-display>input {
+  margin-right: auto;
+  max-width: 236px;
+}
+
+.re-display>label {
+  text-align: right;
+  padding: 0 20px;
+}
+
+.re-display>div {
+  flex: 0 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.re-display>div>* {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+  margin: 5px;
+}
+
+.re-display>div>input {
+  margin-right: auto;
+  max-width: 236px;
+}
+
+.re-display>div>label {
+  text-align: right;
+  padding: 0 20px;
+}
+
+.re-form-header {
+  padding-bottom: 20px;
   flex-basis: 100%;
+}
+
+@media only screen and (max-width: 650px) {
+  .re-display>* {
+    flex: 0 0 100%;
+    margin: auto;
+  }
+  .re-display>label {
+    text-align: center;
+    padding: 0 20px;
+  }
+  .re-display>input {
+    margin-bottom: 15px;
+    margin-top: 7px;
+  }
 }

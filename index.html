@@ -94,8 +94,8 @@
       <div class="flex-center flex-column">
         <h2 class="animated fadeIn mb-4 re-text-center">Wybierz błąd pomiarowy</h2>
         <form class="re-form re-text-center">
-          <label for="" class="re-label">Błąd pomiarowy:</label>
-          <select class="form-control re-form-control re-form-select">
+          <label for="select-option" class="re-label">Błąd pomiarowy:</label>
+          <select class="form-control re-form-control re-form-select" id="select-option">
               <option disabled selected value>Wybierz rodzaj błędu</option>
               <option value="os">Odchylenie standardowe</option>
               <option value="sa">Średnia arytmetyczna</option>
@@ -106,50 +106,63 @@
       </div>
     </div>
     <div id="wprowadz-dane" class="section-divider"></div>
-    <div style="height: 100vh">
-      <div class="flex-center flex-column">
+    <div style="min-height: 100vh">
+      <div class="flex-center flex-column" style="min-height: 100vh">
         <h2 class="animated fadeIn mb-4 re-text-center">Wprowadź dane</h2>
-
         <form class="re-form re-text-center re-data re-display" id="os">
-          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Odchylenie standardowe</h3>
-          <label for="amount" class="re-label">
+          <h3 class="re-text-center re-sub-header re-form-header">Odchylenie standardowe</h3>
+          <label for="count-a" class="re-label">
             Liczba dokonanych pomiarów:
           </label>
-          <input class="form-control re-form-control" type="number" step="1" value="1">
-          <br><br>
-          <label for="amount" class="re-label">
+          <input class="form-control re-form-control re-count-a" type="number" step="1" value="1" min="1" max="100" id="count-a">
+          <label for="average-a" class="re-label">
             Średnia arytmetyczna ze wszystkich pomiarów:
           </label>
-          <input class="form-control re-form-control" type="number" step="0.01">
-          <br><br>
-          <label for="amount" class="re-label">
-            Wartość pomiaru nr 1:
-          </label>
-          <input class="form-control re-form-control" type="number" step="0.01">
+          <input class="form-control re-form-control re-inputA" type="number" step="0.01" id="average-a">
+          <div class="re-input-divA">
+            <label for="value-a1" class="re-label re-inputA">
+              Wartość pomiaru nr 1:
+            </label>
+            <input class="form-control re-form-control" type="number" step="0.01" id="value-a1">
+          </div>
         </form>
 
         <form class="re-form re-text-center re-data" id="sa">
-          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Średnia arytmetyczna</h3>
-          <label for="amount" class="re-label" style="float: left">Liczba dokonanych pomiarów:</label>
-          <input class="form-control re-form-control" style="float: right;" type="number" step="1" value="1"></label> <br><br>
-          <label for="amount" class="re-label" style="float: left">Wartość pomiaru ( 1...n ):</label>
-          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
+          <h3 class="re-text-center re-sub-header re-form-header" style="padding-bottom: 20px;">Średnia arytmetyczna</h3>
+          <label for="count-b" class="re-label">
+            Liczba dokonanych pomiarów:
+          </label>
+          <input class="form-control re-form-control re-count-b" type="number" step="1" value="1" min="1" max="100" id="count-b">
+          <div class="re-input-divB">
+            <label for="value-b1" class="re-label re-inputB">
+              Wartość pomiaru nr 1:
+            </label>
+            <input class="form-control re-form-control" type="number" step="0.01" id="value-b1">
+          </div>
         </form>
 
         <form class="re-form re-text-center re-data" id="bw">
-          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Błąd względny</h3>
-          <label for="amount" class="re-label" style="float: left">Wartość zmierzona:</label>
-          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label> <br><br>
-          <label for="amount" class="re-label" style="float: left">Wartość rzeczywista:</label>
-          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
+          <h3 class="re-text-center re-sub-header re-form-header" style="padding-bottom: 20px;">Błąd względny</h3>
+          <label for="value-c" class="re-label">
+            Wartość zmierzona:
+          </label>
+          <input class="form-control re-form-control" type="number" step="0.01" id="value-c">
+          <label for="real-value-c" class="re-label">
+            Wartość rzeczywista:
+          </label>
+          <input class="form-control re-form-control" type="number" step="0.01" id="real-value-c">
         </form>
 
         <form class="re-form re-text-center re-data" id="bb">
-          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Błąd bezwzględny</h3>
-          <label for="amount" class="re-label" style="float: left">Wartość zmierzona:</label>
-          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label> <br><br>
-          <label for="amount" class="re-label" style="float: left">Wartość rzeczywista:</label>
-          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
+          <h3 class="re-text-center re-sub-header re-form-header" style="padding-bottom: 20px;">Błąd bezwzględny</h3>
+          <label for="value-d" class="re-label">
+            Wartość zmierzona:
+          </label>
+          <input class="form-control re-form-control" type="number" step="0.01" id="value-d">
+          <label for="real-value-d" class="re-label">
+            Wartość rzeczywista:
+          </label>
+          <input class="form-control re-form-control" type="number" step="0.01" id="real-value-d">
         </form>
         <button class="btn btn-primary re-temporary-class" style="margin-top: 15px;">Oblicz!</button>
       </div>
@@ -256,16 +269,65 @@
     select.addEventListener("change", showData);
 
     function showData() {
-      console.log(select);
       const selection = select.options[select.selectedIndex].value;
-      console.log(selection);
       const hideDivs = document.querySelectorAll(".re-data");
       hideDivs.forEach(div => div.classList.remove("re-display"));
       const showDiv = document.querySelector(`#${selection}`);
       showDiv.classList.add("re-display");
+      const scrollTo = document.querySelector("#wprowadz-dane").offsetTop;
+
+      $('html, body').animate({
+        scrollTop: (scrollTo - 54)
+      }, 1000, "easeInOutExpo");
+      return false;
+    }
+
+    const countA = document.querySelector(".re-count-a");
+    countA.addEventListener("change", addInputsA);
+
+    function addInputsA() {
+      let value = countA.value;
+      if (value > 100) {
+        value = 100
+      };
+      console.log(value);
+      const inputsA = document.querySelectorAll(".re-input-divA");
+      inputsA.forEach(input => input.parentNode.removeChild(input));
+      const form = document.getElementById("os");
+      for (var i = 1; i <= value; i++) {
+        var div = document.createElement('div');
+        div.className = 're-input-divA';
+        div.innerHTML = '<label for="value-a' + `${i}` + '" class="re-label re-inputA">Wartość pomiaru nr ' + `${i}` + ':</label><input class="form-control re-form-control" type="number" step="0.01" id="value-a' + `${i}` + '">';
+        document.getElementById('os').appendChild(div);
+      }
+    }
+
+    const countB = document.querySelector(".re-count-b");
+    countB.addEventListener("change", addInputsB);
+
+    function addInputsB() {
+      let value = countB.value;
+      if (value > 100) {
+        value = 100
+      };
+      console.log(value);
+      const inputsB = document.querySelectorAll(".re-input-divB");
+      inputsB.forEach(input => input.parentNode.removeChild(input));
+      const form = document.getElementById("sa");
+      for (var i = 1; i <= value; i++) {
+        var div = document.createElement('div');
+        div.className = 're-input-divB';
+        div.innerHTML = '<label for="value-b' + `${i}` + '" class="re-label re-inputA">Wartość pomiaru nr ' + `${i}` + ':</label><input class="form-control re-form-control" type="number" step="0.01" id="value-b' + `${i}` + '">';
+        document.getElementById('sa').appendChild(div);
+      }
     }
   </script>
 
 </body>
 
 </html>
+
+<!-- <input class="form-control re-form-control re-inputA" type="number" step="0.01" id="average-a">
+<label for="value-a1" class="re-label re-inputA">
+
+ -->
