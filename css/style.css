@@ -1,4 +1,8 @@
 /* Your custom styles */
+html, body, * {
+  font-family: 'Montserrat', sans-serif !IMPORTANT;
+  letter-spacing: -1px;
+}
 
 .nav-item {
   margin-left: 2px;
@@ -56,7 +60,7 @@
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !IMPORTANT;
   position: relative !IMPORTANT;
   margin-bottom: .3125rem !IMPORTANT;
-  font-size: .875rem !IMPORTANT;
+  font-size: 1rem !IMPORTANT;
   text-decoration: none !IMPORTANT;
   text-transform: uppercase !IMPORTANT;
   letter-spacing: 0 !IMPORTANT;
@@ -78,4 +82,17 @@
   color: #3f51b5 !IMPORTANT;
   background-color: hsla(0, 0%, 60%, .2) !IMPORTANT;
   border-color: hsla(0, 0%, 60%, .2) !IMPORTANT;
+}
+.re-temporary-class:active:hover {
+    color: #3f51b5 !IMPORTANT ;
+    background-color: hsla(0,0%,60%,.4) !IMPORTANT;
+    border-color: hsla(0,0%,60%,.4) !IMPORTANT;
+}
+
+.re-data {
+  display: none;
+}
+
+.re-display {
+  display: block;
 }

@@ -14,6 +14,7 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500&amp;subset=latin-ext" rel="stylesheet">
 
   <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
@@ -94,7 +95,7 @@
         <h2 class="animated fadeIn mb-4 re-text-center">Wybierz błąd pomiarowy</h2>
         <form class="re-form re-text-center">
           <label for="" class="re-label">Błąd pomiarowy:</label>
-          <select class="form-control re-form-control">
+          <select class="form-control re-form-control re-form-select">
               <option disabled selected value>Wybierz rodzaj błędu</option>
               <option value="os">Odchylenie standardowe</option>
               <option value="sa">Średnia arytmetyczna</option>
@@ -108,13 +109,39 @@
     <div style="height: 100vh">
       <div class="flex-center flex-column">
         <h2 class="animated fadeIn mb-4 re-text-center">Wprowadź dane</h2>
-        <form class="re-form re-text-center">
+
+        <form class="re-form re-text-center re-data re-display" id="os">
+          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Odchylenie standardowe</h3>
           <label for="amount" class="re-label" style="float: left">Wartość zmierzona:</label>
           <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label> <br><br>
           <label for="amount" class="re-label" style="float: left">Wartość rzeczywista:</label>
           <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
         </form>
-        <button class="btn btn-primary re-temporary-class">Oblicz!</button>
+
+        <form class="re-form re-text-center re-data" id="sa">
+          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Średnia arytmetyczna</h3>
+          <label for="amount" class="re-label" style="float: left">Wartość zmierzona:</label>
+          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label> <br><br>
+          <label for="amount" class="re-label" style="float: left">Wartość rzeczywista:</label>
+          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
+        </form>
+
+        <form class="re-form re-text-center re-data" id="bw">
+          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Błąd względny</h3>
+          <label for="amount" class="re-label" style="float: left">Wartość zmierzona:</label>
+          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label> <br><br>
+          <label for="amount" class="re-label" style="float: left">Wartość rzeczywista:</label>
+          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
+        </form>
+
+        <form class="re-form re-text-center re-data" id="bb">
+          <h3 class="re-text-center re-sub-header" style="padding-bottom: 20px;">Błąd bezwzględny</h3>
+          <label for="amount" class="re-label" style="float: left">Wartość zmierzona:</label>
+          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label> <br><br>
+          <label for="amount" class="re-label" style="float: left">Wartość rzeczywista:</label>
+          <input class="form-control re-form-control" style="float: right;" type="number" step="0.01"></label>
+        </form>
+        <button class="btn btn-primary re-temporary-class" style="margin-top: 15px;">Oblicz!</button>
       </div>
     </div>
     <div id="zobacz-wynik" class="section-divider"></div>
@@ -212,8 +239,21 @@
         }
       }
 
-    };
+    }
     window.addEventListener("scroll", changeActive);
+
+    const select = document.querySelector(".re-form-select");
+    select.addEventListener("change", showData);
+
+    function showData() {
+      console.log(select);
+      const selection = select.options[select.selectedIndex].value;
+      console.log(selection);
+      const hideDivs = document.querySelectorAll(".re-data");
+      hideDivs.forEach(div => div.classList.remove("re-display"));
+      const showDiv = document.querySelector(`#${selection}`);
+      showDiv.classList.add("re-display");
+    }
   </script>
 
 </body>
