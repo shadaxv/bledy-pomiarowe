@@ -175,3 +175,11 @@ html, body, * {
     margin-top: 7px;
   }
 }
+
+td, th {
+  border: 1px solid #dee2e6;
+}
+
+table th {
+  font-weight: 500 !IMPORTANT;
+}

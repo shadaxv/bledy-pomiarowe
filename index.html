@@ -115,10 +115,10 @@
             Liczba dokonanych pomiarów:
           </label>
           <input class="form-control re-form-control re-count-a" type="number" step="1" value="1" min="1" max="100" id="count-a">
-          <label for="average-a" class="re-label">
+          <!-- <label for="average-a" class="re-label">
             Średnia arytmetyczna ze wszystkich pomiarów:
           </label>
-          <input class="form-control re-form-control re-inputA" type="number" step="0.01" id="average-a">
+          <input class="form-control re-form-control re-inputA" type="number" step="0.01" id="average-a"> -->
           <div class="re-input-divA">
             <label for="value-a1" class="re-label re-inputA">
               Wartość pomiaru nr 1:
@@ -164,12 +164,12 @@
           </label>
           <input class="form-control re-form-control" type="number" step="0.01" id="real-value-d">
         </form>
-        <button class="btn btn-primary re-temporary-class" style="margin-top: 15px;">Oblicz!</button>
+        <button id="button" class="btn btn-primary re-temporary-class" style="margin-top: 15px;">Oblicz!</button>
       </div>
     </div>
     <div id="zobacz-wynik" class="section-divider"></div>
     <div style="height: 100vh">
-      <div class="flex-center flex-column">
+      <div class="flex-center flex-column" id="resultDiv">
         <h2 class="animated fadeIn mb-4 re-text-center">Zobacz wynik</h2>
       </div>
     </div>
@@ -281,7 +281,7 @@
       }, 1000, "easeInOutExpo");
       return false;
     }
-
+    let inputCount = 1;
     const countA = document.querySelector(".re-count-a");
     countA.addEventListener("change", addInputsA);
 
@@ -289,13 +289,13 @@
       let value = countA.value;
       if (value > 100) {
         value = 100
-      };
-      console.log(value);
+      }
+      inputCount = countA.value;
       const inputsA = document.querySelectorAll(".re-input-divA");
       inputsA.forEach(input => input.parentNode.removeChild(input));
       const form = document.getElementById("os");
       for (var i = 1; i <= value; i++) {
-        var div = document.createElement('div');
+        let div = document.createElement('div');
         div.className = 're-input-divA';
         div.innerHTML = '<label for="value-a' + `${i}` + '" class="re-label re-inputA">Wartość pomiaru nr ' + `${i}` + ':</label><input class="form-control re-form-control" type="number" step="0.01" id="value-a' + `${i}` + '">';
         document.getElementById('os').appendChild(div);
@@ -309,17 +309,120 @@
       let value = countB.value;
       if (value > 100) {
         value = 100
-      };
+      }
+      inputCount = countB.value;
       console.log(value);
       const inputsB = document.querySelectorAll(".re-input-divB");
       inputsB.forEach(input => input.parentNode.removeChild(input));
       const form = document.getElementById("sa");
       for (var i = 1; i <= value; i++) {
-        var div = document.createElement('div');
+        let div = document.createElement('div');
         div.className = 're-input-divB';
         div.innerHTML = '<label for="value-b' + `${i}` + '" class="re-label re-inputA">Wartość pomiaru nr ' + `${i}` + ':</label><input class="form-control re-form-control" type="number" step="0.01" id="value-b' + `${i}` + '">';
         document.getElementById('sa').appendChild(div);
       }
+    }
+
+    const button = document.querySelector("#button");
+    button.addEventListener("click", calculate);
+
+    function calculate() {
+      const form = document.querySelector(".re-display");
+      const formId = form.getAttribute('id')
+      if (formId == "bw") {
+        const inputBW1 = document.querySelector("#value-c");
+        const inputBW2 = document.querySelector("#real-value-c");
+        const result = (Math.abs(inputBW1.value - inputBW2.value) / inputBW2.value).toFixed(4).replace(/\.?0+$/, "");
+        const removeResult = document.querySelector(".result");
+        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        let div = document.createElement('div');
+        div.className = 'result';
+        div.innerHTML = '<table class="table"><thead class="blue-grey lighten-4"><tr><th>Wartość zmierzona</th><th>Wartość rzeczywista</th><th>Błąd</th></tr></thead><tr><td>' + `${inputBW1.value}` + '</td><td>' + `${inputBW2.value}` + '</td><td>' + `${result}` + '</td></tr></table>';
+        document.getElementById('resultDiv').appendChild(div);
+      } else if (formId == "bb") {
+        const inputBB1 = document.querySelector("#value-d");
+        const inputBB2 = document.querySelector("#real-value-d");
+        const result = Math.abs(inputBB1.value - inputBB2.value).toFixed(4).replace(/\.?0+$/, "");
+        const removeResult = document.querySelector(".result");
+        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        let div = document.createElement('div');
+        div.className = 'result';
+        div.innerHTML = '<table class="table"><tr><thead class="blue-grey lighten-4"><th>Wartość zmierzona</th><th>Wartość rzeczywista</th><th>Błąd</th></thead></tr><tr><td>' + `${inputBB1.value}` + '</td><td>' + `${inputBB2.value}` + '</td><td>' + `${result}` + '</td></tr></table>';
+        document.getElementById('resultDiv').appendChild(div);
+      } else if (formId == "sa") {
+        let number = [];
+        for(var i = 1; i <= inputCount; i++) {
+          const value = parseFloat(document.querySelector("#value-b" + `${i}`).value);
+          number.push(value);
+        }
+        const arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+        const result = arrAvg(number).toFixed(4).replace(/\.?0+$/, "");
+
+        const removeResult = document.querySelector(".result");
+        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        let div = document.createElement('div');
+        div.className = 'result';
+        let text = "";
+        text += '<table class="table"><tr><thead class="blue-grey lighten-4">';
+        for(var i = 1; i <= inputCount; i++) {
+          text += '<th>Pomiar nr.' + `${i}` + '</th>';
+        }
+        text += '</thead></tr><tr>';
+        for(var i = 1; i <= inputCount; i++) {
+          text += '<td>' + `${number[i-1]}` + '</td>';
+        }
+        text += '</tr><tr>';
+        text += '<th>Średnia arytmetyczna</th>';
+        text += '</tr><tr>';
+        text += '<td>' + `${result}` + '</td>';
+        text += '</tr></table>';
+        div.innerHTML = text;
+        document.getElementById('resultDiv').appendChild(div);
+      } else if (formId == "os") {
+        let number = [];
+        let number2 = [];
+        for(var i = 1; i <= inputCount; i++) {
+          const value = parseFloat(document.querySelector("#value-a" + `${i}`).value);
+          number.push(value);
+        }
+        const arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+        const averageValue = arrAvg(number).toFixed(4).replace(/\.?0+$/, "");
+        for(var i = 0; i < inputCount; i++) {
+          number2.push(Math.pow((number[i] - averageValue), 2));
+        }
+        const arrSum = arr => arr.reduce((a,b) => a + b, 0);
+        const result1 = arrSum(number2).toFixed(4).replace(/\.?0+$/, "");
+        const result2 = Math.sqrt(result1 / (inputCount * (inputCount - 1)));
+
+        const removeResult = document.querySelector(".result");
+        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        let div = document.createElement('div');
+        div.className = 'result';
+        let text = "";
+        text += '<table class="table"><tr><thead class="blue-grey lighten-4">';
+        for(var i = 1; i <= inputCount; i++) {
+          text += '<th>Pomiar nr.' + `${i}` + '</th>';
+        }
+        text += '</thead></tr><tr>';
+        for(var i = 1; i <= inputCount; i++) {
+          text += '<td>' + `${number[i-1]}` + '</td>';
+        }
+        text += '</tr><tr>';
+        text += '<th>Średnia arytmetyczna</th><th>Odchylenie standardowe</th>';
+        text += '</tr><tr>';
+        text += '<td>' + `${averageValue}` + '</td><td>' + `${result2}` + '</td>';
+        text += '</tr></table>';
+        div.innerHTML = text;
+        document.getElementById('resultDiv').appendChild(div);
+      }
+
+
+      const scrollTo = document.querySelector("#zobacz-wynik").offsetTop;
+
+      $('html, body').animate({
+        scrollTop: (scrollTo - 54)
+      }, 1000, "easeInOutExpo");
+      return false;
     }
   </script>
 
