@@ -183,3 +183,8 @@ td, th {
 table th {
   font-weight: 500 !IMPORTANT;
 }
+
+.result {
+  overflow:auto;
+  width: 80%;
+}
