@@ -67,6 +67,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#zobacz-wynik">Zobacz wynik</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#pobierz-pliki">Pobierz pliki</a>
+          </li>
 
         </ul>
         <!-- Links -->
@@ -170,9 +173,21 @@
     <div id="zobacz-wynik" class="section-divider"></div>
     <div style="height: 100vh">
       <div class="flex-center flex-column" id="resultDiv">
-        <h2 class="animated fadeIn mb-4 re-text-center">Zobacz wynik</h2>
+        <h2 class="animated fadeIn mb-4 re-text-center">Wynik</h2>
       </div>
     </div>
+
+    <div id="pobierz-pliki" class="section-divider"></div>
+    <div style="min-height: 100vh">
+      <div class="flex-center flex-column re-text-center" style="min-height: 100vh">
+        <h2 class="animated fadeIn mb-4 re-text-center" target="_blank">Pobierz pliki</h2>
+        <a class="btn btn-primary re-temporary-class" style="white-space: normal !IMPORTANT; font-weight: 400 !IMPORTANT" href="pliki/Ruch jednostajny po okręgu.pdf" target="_blank">1. Ruch jednostajny po okręgu</a>
+        <a class="btn btn-primary re-temporary-class" style="white-space: normal !IMPORTANT; font-weight: 400 !IMPORTANT" href="pliki/Wyznaczanie przyspieszenia w ruchu jednostajnie przyspieszonym.pdf" target="_blank">2. Wyznaczanie przyspieszenia w ruchu jednostajnie przyspieszonym</a>
+        <a class="btn btn-primary re-temporary-class" style="white-space: normal !IMPORTANT; font-weight: 400 !IMPORTANT" href="pliki/Wyznaczenie przyśpieszenia ziemskiego poprzez wykorzystanie wahadła matematycznego.pdf" target="_blank">3. Wyznaczenie przyśpieszenia ziemskiego poprzez wykorzystanie wahadła matematycznego</a>
+        <a class="btn btn-primary re-temporary-class" style="white-space: normal !IMPORTANT; font-weight: 400 !IMPORTANT" href="pliki/Wyznaczenie stałej siatki dyfrakcyjnej.pdf" target="_blank">4. Wyznaczenie stałej siatki dyfrakcyjnej</a>
+        <a class="btn btn-primary re-temporary-class" style="white-space: normal !IMPORTANT; font-weight: 400 !IMPORTANT" href="pliki/Wyznaczenie współczynnika tarcia kinetycznego.pdf" target="_blank">5. Wyznaczenie współczynnika tarcia kinetycznego</a>
+      </div>
+      </form>
 
   </main>
   <!--Main layout-->
@@ -334,41 +349,49 @@
         const inputBW2 = document.querySelector("#real-value-c");
         const result = (Math.abs(inputBW1.value - inputBW2.value) / inputBW2.value).toFixed(4).replace(/\.?0+$/, "");
         const removeResult = document.querySelector(".result");
-        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        if (removeResult != null) {
+          removeResult.parentNode.removeChild(removeResult);
+        }
         let div = document.createElement('div');
         div.className = 'result';
-        div.innerHTML = '<table class="table"><thead class="blue-grey lighten-4"><tr><th>Wartość zmierzona</th><th>Wartość rzeczywista</th><th>Błąd</th></tr></thead><tr><td>' + `${inputBW1.value}` + '</td><td>' + `${inputBW2.value}` + '</td><td>' + `${result}` + '</td></tr></table>';
+        div.innerHTML = '<table class="table"><thead class="blue-grey lighten-4"><tr><th>Wartość zmierzona</th><th>Wartość rzeczywista</th><th>Błąd</th></tr></thead><tr><td>' + `${inputBW1.value}` + '</td><td>' + `${inputBW2.value}` + '</td><td>' +
+          `${result}` + '</td></tr></table>';
         document.getElementById('resultDiv').appendChild(div);
       } else if (formId == "bb") {
         const inputBB1 = document.querySelector("#value-d");
         const inputBB2 = document.querySelector("#real-value-d");
         const result = Math.abs(inputBB1.value - inputBB2.value).toFixed(4).replace(/\.?0+$/, "");
         const removeResult = document.querySelector(".result");
-        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        if (removeResult != null) {
+          removeResult.parentNode.removeChild(removeResult);
+        }
         let div = document.createElement('div');
         div.className = 'result';
-        div.innerHTML = '<table class="table"><tr><thead class="blue-grey lighten-4"><th>Wartość zmierzona</th><th>Wartość rzeczywista</th><th>Błąd</th></thead></tr><tr><td>' + `${inputBB1.value}` + '</td><td>' + `${inputBB2.value}` + '</td><td>' + `${result}` + '</td></tr></table>';
+        div.innerHTML = '<table class="table"><tr><thead class="blue-grey lighten-4"><th>Wartość zmierzona</th><th>Wartość rzeczywista</th><th>Błąd</th></thead></tr><tr><td>' + `${inputBB1.value}` + '</td><td>' + `${inputBB2.value}` + '</td><td>' +
+          `${result}` + '</td></tr></table>';
         document.getElementById('resultDiv').appendChild(div);
       } else if (formId == "sa") {
         let number = [];
-        for(var i = 1; i <= inputCount; i++) {
+        for (var i = 1; i <= inputCount; i++) {
           const value = parseFloat(document.querySelector("#value-b" + `${i}`).value);
           number.push(value);
         }
-        const arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+        const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
         const result = arrAvg(number).toFixed(4).replace(/\.?0+$/, "");
 
         const removeResult = document.querySelector(".result");
-        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        if (removeResult != null) {
+          removeResult.parentNode.removeChild(removeResult);
+        }
         let div = document.createElement('div');
         div.className = 'result';
         let text = "";
         text += '<table class="table"><tr><thead class="blue-grey lighten-4">';
-        for(var i = 1; i <= inputCount; i++) {
+        for (var i = 1; i <= inputCount; i++) {
           text += '<th>Pomiar nr.' + `${i}` + '</th>';
         }
         text += '</thead></tr><tr>';
-        for(var i = 1; i <= inputCount; i++) {
+        for (var i = 1; i <= inputCount; i++) {
           text += '<td>' + `${number[i-1]}` + '</td>';
         }
         text += '</tr><tr>';
@@ -381,30 +404,32 @@
       } else if (formId == "os") {
         let number = [];
         let number2 = [];
-        for(var i = 1; i <= inputCount; i++) {
+        for (var i = 1; i <= inputCount; i++) {
           const value = parseFloat(document.querySelector("#value-a" + `${i}`).value);
           number.push(value);
         }
-        const arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+        const arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
         const averageValue = arrAvg(number).toFixed(4).replace(/\.?0+$/, "");
-        for(var i = 0; i < inputCount; i++) {
+        for (var i = 0; i < inputCount; i++) {
           number2.push(Math.pow((number[i] - averageValue), 2));
         }
-        const arrSum = arr => arr.reduce((a,b) => a + b, 0);
+        const arrSum = arr => arr.reduce((a, b) => a + b, 0);
         const result1 = arrSum(number2).toFixed(4).replace(/\.?0+$/, "");
         const result2 = Math.sqrt(result1 / (inputCount * (inputCount - 1)));
 
         const removeResult = document.querySelector(".result");
-        if(removeResult != null) {removeResult.parentNode.removeChild(removeResult);}
+        if (removeResult != null) {
+          removeResult.parentNode.removeChild(removeResult);
+        }
         let div = document.createElement('div');
         div.className = 'result';
         let text = "";
         text += '<table class="table"><tr><thead class="blue-grey lighten-4">';
-        for(var i = 1; i <= inputCount; i++) {
+        for (var i = 1; i <= inputCount; i++) {
           text += '<th>Pomiar nr.' + `${i}` + '</th>';
         }
         text += '</thead></tr><tr>';
-        for(var i = 1; i <= inputCount; i++) {
+        for (var i = 1; i <= inputCount; i++) {
           text += '<td>' + `${number[i-1]}` + '</td>';
         }
         text += '</tr><tr>';
@@ -423,6 +448,7 @@
         scrollTop: (scrollTo - 54)
       }, 1000, "easeInOutExpo");
       return false;
+
     }
   </script>
 
